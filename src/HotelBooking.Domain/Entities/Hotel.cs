@@ -1,4 +1,4 @@
-﻿namespace HotelBooking.Domain
+﻿namespace HotelBooking.Domain.Entities
 {
     public class Hotel
     {

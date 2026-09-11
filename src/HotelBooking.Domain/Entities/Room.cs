@@ -1,4 +1,6 @@
-﻿namespace HotelBooking.Domain
+﻿using HotelBooking.Domain.Enums;
+
+namespace HotelBooking.Domain.Entities
 {
     public class Room
     {
