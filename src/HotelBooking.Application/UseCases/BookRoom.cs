@@ -26,14 +26,6 @@ public class BookRoom
             throw new KeyNotFoundException($"Room {request.RoomId} not found.");
         }
 
-        // check again for date overlap (this also happens when the "find available room endpoint" is called
-        var hasDateOverlap = await _bookingRepository.HasOverlappingBookingAsync(request.RoomId, request.CheckIn, request.CheckOut);
-
-        if (hasDateOverlap)
-        {
-            throw new InvalidOperationException("Room is already booked for the requested dates.");
-        }
-
         var bookingReference = GenerateBookingReference();
 
         var booking = new Booking(request.RoomId, room.Type, request.CheckIn, request.CheckOut, request.NumberOfGuests, bookingReference);
@@ -45,7 +37,7 @@ public class BookRoom
 
     private static string GenerateBookingReference()
     {
-        const string allowedCharacters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // excludes O/0, I/1
+        const string allowedCharacters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // excludes confusing characters O/0, I/1
         
         const int referenceLength = 8;
 
