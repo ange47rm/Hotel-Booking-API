@@ -1,5 +1,6 @@
 ﻿using HotelBooking.Application.Interfaces;
 using HotelBooking.Domain.Entities;
+using HotelBooking.Domain.ValueObjects;
 
 namespace HotelBooking.Application.UseCases;
 
@@ -26,25 +27,12 @@ public class BookRoom
             throw new KeyNotFoundException($"Room {request.RoomId} not found.");
         }
 
-        var bookingReference = GenerateBookingReference();
+        var bookingReference = BookingReference.Generate();
 
         var booking = new Booking(request.RoomId, room.Type, request.CheckIn, request.CheckOut, request.NumberOfGuests, bookingReference);
 
         await _bookingRepository.AddAsync(booking);
 
         return new BookingResponse(booking.Reference, booking.RoomId, booking.CheckIn, booking.CheckOut, booking.NumberOfGuests);
-    }
-
-    private static string GenerateBookingReference()
-    {
-        const string allowedCharacters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // excludes confusing characters O/0, I/1
-        
-        const int referenceLength = 8;
-
-        // build a sequence of random characters by picking one at a time from the allowed set
-        var randomCharacters = Enumerable.Range(0, referenceLength)
-            .Select(_ => allowedCharacters[Random.Shared.Next(allowedCharacters.Length)]);
-
-        return new string(randomCharacters.ToArray());
     }
 }

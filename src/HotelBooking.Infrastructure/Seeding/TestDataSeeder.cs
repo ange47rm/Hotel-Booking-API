@@ -1,5 +1,6 @@
 ﻿using HotelBooking.Domain.Entities;
 using HotelBooking.Domain.Enums;
+using HotelBooking.Domain.ValueObjects;
 using HotelBooking.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,9 +46,9 @@ public class TestDataSeeder
 
             var bookings = new[]
             {
-                new Booking(singleRoom.Id, RoomType.Single, today.AddDays(7), today.AddDays(10), 1, $"SEED{hotel.Id}S1"),
-                new Booking(doubleRoom.Id, RoomType.Double, today.AddDays(7), today.AddDays(10), 2, $"SEED{hotel.Id}D1"),
-                new Booking(deluxeRoom.Id, RoomType.Deluxe, today.AddDays(7), today.AddDays(10), 4, $"SEED{hotel.Id}X1"),
+                new Booking(singleRoom.Id, RoomType.Single, today.AddDays(7), today.AddDays(10), 1, BookingReference.Generate()),
+                new Booking(doubleRoom.Id, RoomType.Double, today.AddDays(7), today.AddDays(10), 2, BookingReference.Generate()),
+                new Booking(deluxeRoom.Id, RoomType.Deluxe, today.AddDays(7), today.AddDays(10), 4, BookingReference.Generate()),
             };
 
             _context.Bookings.AddRange(bookings);
