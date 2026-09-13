@@ -36,18 +36,6 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Room>()
-            .HasOne<Hotel>()
-            .WithMany()
-            .HasForeignKey(r => r.HotelId);
-
-        modelBuilder.Entity<Booking>()
-            .HasOne<Room>()
-            .WithMany()
-            .HasForeignKey(b => b.RoomId);
-
-        modelBuilder.Entity<Booking>()
-            .HasIndex(b => b.Reference)
-            .IsUnique();
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
     }
 }
