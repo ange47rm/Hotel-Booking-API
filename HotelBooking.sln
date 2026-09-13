@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12201.205 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
@@ -16,6 +16,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBooking.Application.Tests", "tests\HotelBooking.Application.Tests\HotelBooking.Application.Tests.csproj", "{981185CD-7E8C-4B4E-A5D8-FC2B1FD3D36C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBooking.Api.Tests", "tests\HotelBooking.Api.Tests\HotelBooking.Api.Tests.csproj", "{1406EC6D-52A7-4968-B109-90442F01203B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBooking.Domain.Tests", "tests\HotelBooking.Domain.Tests\HotelBooking.Domain.Tests.csproj", "{F9EB7C19-A21E-4F8F-936B-93A068712AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,18 @@ Global
 		{1406EC6D-52A7-4968-B109-90442F01203B}.Release|x64.Build.0 = Release|Any CPU
 		{1406EC6D-52A7-4968-B109-90442F01203B}.Release|x86.ActiveCfg = Release|Any CPU
 		{1406EC6D-52A7-4968-B109-90442F01203B}.Release|x86.Build.0 = Release|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Debug|x64.Build.0 = Debug|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Release|x64.ActiveCfg = Release|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Release|x64.Build.0 = Release|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,8 +124,9 @@ Global
 		{579294F1-2627-42CB-97A4-5FE063A67891} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{6450FCB4-3AAC-43EA-BF55-ABE6C863E009} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{09E56FEA-CEF8-4E02-99AA-664550F2B8F1} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
-		{981185CD-7E8C-4B4E-A5D8-FC2B1FD3D36C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
-		{1406EC6D-52A7-4968-B109-90442F01203B} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{981185CD-7E8C-4B4E-A5D8-FC2B1FD3D36C} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{1406EC6D-52A7-4968-B109-90442F01203B} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{F9EB7C19-A21E-4F8F-936B-93A068712AB1} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B52C2D9-129C-4054-9123-5AA73F301029}
