@@ -17,7 +17,7 @@ namespace HotelBooking.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +51,7 @@ namespace HotelBooking.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Reference = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Reference = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     CheckIn = table.Column<DateOnly>(type: "date", nullable: false),
                     CheckOut = table.Column<DateOnly>(type: "date", nullable: false),

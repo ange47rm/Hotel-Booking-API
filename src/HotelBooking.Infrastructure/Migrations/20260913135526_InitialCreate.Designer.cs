@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelBooking.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260913111421_InitialCreate")]
+    [Migration("20260913135526_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -47,7 +47,8 @@ namespace HotelBooking.Infrastructure.Migrations
 
                     b.Property<string>("Reference")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
@@ -72,7 +73,8 @@ namespace HotelBooking.Infrastructure.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
