@@ -55,7 +55,8 @@ namespace HotelBooking.Infrastructure.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     CheckIn = table.Column<DateOnly>(type: "date", nullable: false),
                     CheckOut = table.Column<DateOnly>(type: "date", nullable: false),
-                    NumberOfGuests = table.Column<int>(type: "int", nullable: false)
+                    NumberOfGuests = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

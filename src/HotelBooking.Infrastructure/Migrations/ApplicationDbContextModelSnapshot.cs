@@ -36,6 +36,9 @@ namespace HotelBooking.Infrastructure.Migrations
                     b.Property<DateOnly>("CheckOut")
                         .HasColumnType("date");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("NumberOfGuests")
                         .HasColumnType("int");
 
