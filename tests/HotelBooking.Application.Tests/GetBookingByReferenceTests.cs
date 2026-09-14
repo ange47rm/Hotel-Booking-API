@@ -23,8 +23,10 @@ public class GetBookingByReferenceTests
     [Fact]
     public async Task ExecuteAsync_Found_ReturnsMappedResponse()
     {
-        var booking = new Booking(1, RoomType.Double, new DateOnly(2026, 1, 10), new DateOnly(2026, 1, 15), 2, "ABC12345");
-        
+        var checkIn = DateOnly.FromDateTime(DateTime.Today).AddDays(30);
+        var checkOut = checkIn.AddDays(5);
+        var booking = new Booking(1, RoomType.Double, checkIn, checkOut, 2, "ABC12345");
+
         var repository = new Mock<IBookingRepository>();
         repository.Setup(r => r.GetByReferenceAsync("ABC12345")).ReturnsAsync(booking);
 

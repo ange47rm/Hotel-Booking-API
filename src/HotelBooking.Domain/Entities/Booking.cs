@@ -15,6 +15,9 @@ public class Booking : AuditableEntity
 
     public Booking(int roomId, RoomType roomType, DateOnly checkIn, DateOnly checkOut, int numberOfGuests, string reference)
     {
+        if (checkIn < DateOnly.FromDateTime(DateTime.UtcNow))
+            throw new ArgumentException("Check-in cannot be in the past.");
+
         if (checkOut <= checkIn)
             throw new ArgumentException("Check-out must be after check-in.");
 

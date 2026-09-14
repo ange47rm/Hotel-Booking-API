@@ -17,6 +17,9 @@ public class FindAvailableRooms
 
     public async Task<List<AvailableRoomResponse>> ExecuteAsync(FindAvailableRoomsRequest request)
     {
+        if (request.CheckIn < DateOnly.FromDateTime(DateTime.UtcNow))
+            throw new ArgumentException("Check-in cannot be in the past.");
+
         if (request.CheckOut <= request.CheckIn)
             throw new ArgumentException("Check-out must be after check-in.");
 
