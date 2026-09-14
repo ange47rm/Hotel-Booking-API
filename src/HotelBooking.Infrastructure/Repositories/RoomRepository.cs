@@ -20,12 +20,20 @@ public class RoomRepository : IRoomRepository
         return await _context.Rooms.FindAsync(roomId);
     }
 
-    public async Task<List<Room>> FindAvailableAsync(int hotelId, DateOnly checkIn, DateOnly checkOut, IEnumerable<RoomType> suitableRoomTypes)
+    public async Task<List<Room>> FindAvailableAsync(int? hotelId, DateOnly checkIn, DateOnly checkOut, IEnumerable<RoomType> suitableTypes)
     {
-        return await _context.Rooms
-            .Where(room => room.HotelId == hotelId && suitableRoomTypes.Contains(room.Type))
-            .Where(room => !_context.Bookings.Any(booking =>
-                booking.RoomId == room.Id && booking.CheckIn < checkOut && checkIn < booking.CheckOut))
-            .ToListAsync();
+        var query = _context.Rooms.AsQueryable();
+
+        if (hotelId is not null)
+            query = query.Where(r => r.HotelId == hotelId);
+
+        // get suitable rooms
+        var roomsOfSuitableType = query.Where(room => suitableTypes.Contains(room.Type));
+
+        // ensure suitable rooms have no bookings based on input dates
+        var availableRooms = roomsOfSuitableType.Where(room =>
+            !_context.Bookings.Any(booking => booking.RoomId == room.Id && booking.CheckIn < checkOut && checkIn < booking.CheckOut));
+
+        return await availableRooms.ToListAsync();
     }
 }

@@ -43,18 +43,18 @@ public class BookingRepository : IBookingRepository
         }
         catch (SqlException)
         {
-            throw new InvalidOperationException("Could not secure the room for booking — please try again.");
+            throw new InvalidOperationException("Could not secure the room for booking. Please try again.");
         }
     }
 
     public async Task<Booking?> GetByReferenceAsync(string reference)
     {
-        return await _context.Bookings.FirstOrDefaultAsync(b => b.Reference == reference);
+        return await _context.Bookings.FirstOrDefaultAsync(booking => booking.Reference == reference);
     }
 
     private async Task<bool> HasOverlappingBookingAsync(int roomId, DateOnly checkIn, DateOnly checkOut)
     {
-        return await _context.Bookings.AnyAsync(b =>
-            b.RoomId == roomId && b.CheckIn < checkOut && checkIn < b.CheckOut);
+        return await _context.Bookings.AnyAsync(booking =>
+            booking.RoomId == roomId && booking.CheckIn < checkOut && checkIn < booking.CheckOut);
     }
 }
